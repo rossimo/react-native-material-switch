@@ -208,13 +208,15 @@ var MaterialSwitch = React.createClass({
             height: this.props.switchHeight,
             width: this.props.switchWidth,
             borderRadius: this.props.switchHeight/2,
+            elevation: 5
           }}/>
         <TouchableHighlight underlayColor='transparent' activeOpacity={1} style={{
             height: Math.max(this.props.buttonRadius*2+doublePadding, this.props.switchHeight+doublePadding),
             width: this.props.switchWidth+doublePadding,
             position: 'absolute',
             top: 1,
-            left: 1
+            left: 1,
+            elevation: 5
           }}>
           <Animated.View style={[{
               backgroundColor:
