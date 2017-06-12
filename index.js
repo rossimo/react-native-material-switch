@@ -125,6 +125,11 @@ var MaterialSwitch = React.createClass({
     });
   },
 
+  componentWillReceiveProps(props) {
+    if (props.active != this.state.state && props.active) this.activate();
+    else if (props.active != this.state.state && !props.active) this.deactivate();
+  },
+
   onSwipe(currentPosition, startingPosition, onChange, onTerminate) {
     if (currentPosition-startingPosition >= 0) {
       if (currentPosition-startingPosition > this.state.width/2 || startingPosition == this.state.width) {
