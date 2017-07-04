@@ -213,7 +213,11 @@ var MaterialSwitch = React.createClass({
             height: this.props.switchHeight,
             width: this.props.switchWidth,
             borderRadius: this.props.switchHeight/2,
-            elevation: 5
+            elevation: 5,
+            shadowColor: 'black',
+            shadowOffset: {width: 1, height: 1},
+            shadowRadius: 5,
+            shadowOpacity: .5
           }}/>
         <TouchableHighlight underlayColor='transparent' activeOpacity={1} style={{
             height: Math.max(this.props.buttonRadius*2+doublePadding, this.props.switchHeight+doublePadding),
