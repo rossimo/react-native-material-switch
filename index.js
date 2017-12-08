@@ -1,5 +1,7 @@
 var React = require('react');
 var ReactNative = require('react-native');
+var PropTypes = require('prop-types');
+var createReactClass = require('create-react-class');
 
 var {
   PanResponder,
@@ -8,8 +10,29 @@ var {
   Animated,
 } = ReactNative;
 
-var MaterialSwitch = React.createClass({
-  padding: 2,
+var MaterialSwitch = createReactClass({
+  padding: 8,
+
+  propTypes: {
+    active: PropTypes.bool,
+    style: View.propTypes.style,
+    inactiveButtonColor: PropTypes.string,
+    inactiveButtonPressedColor: PropTypes.string,
+    activeButtonColor: PropTypes.string,
+    activeButtonPressedColor: PropTypes.string,
+    buttonShadow: View.propTypes.style,
+    activeBackgroundColor: PropTypes.string,
+    inactiveBackgroundColor: PropTypes.string,
+    buttonRadius: PropTypes.number,
+    switchWidth: PropTypes.number,
+    switchHeight: PropTypes.number,
+    buttonContent: PropTypes.element,
+    enableSlide: PropTypes.bool,
+    switchAnimationTime: PropTypes.number,
+    onActivate: PropTypes.func,
+    onDeactivate: PropTypes.func,
+    onChangeState: PropTypes.func,
+  },
 
   getDefaultProps() {
     return {
@@ -20,6 +43,7 @@ var MaterialSwitch = React.createClass({
       activeButtonColor: '#FAFAFA',
       activeButtonPressedColor: '#F5F5F5',
       buttonShadow: {
+        elevation: 3,
         shadowColor: '#000',
         shadowOpacity: 0.5,
         shadowRadius: 1,
@@ -206,7 +230,7 @@ var MaterialSwitch = React.createClass({
     return (
       <View
         {...this._panResponder.panHandlers}
-        style={{padding: this.padding, position: 'relative'}}>
+        style={[{padding: this.padding, position: 'relative'}, this.props.style]}>
         <View
           style={{
             backgroundColor: this.state.state ? this.props.activeBackgroundColor : this.props.inactiveBackgroundColor,
